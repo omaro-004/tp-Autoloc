@@ -6,6 +6,8 @@ import tn.esprit.tpautoloc.domain.enums.ModePaiement;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.*;
+
 
 @Entity
 @Getter
@@ -23,4 +25,10 @@ public class Paiement {
 
     @Enumerated(EnumType.STRING)
     private ModePaiement modePaiement;
+
+    //* paiements<->1 contrat
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="contrat_id")
+    private Contrat contrat ;
+
 }

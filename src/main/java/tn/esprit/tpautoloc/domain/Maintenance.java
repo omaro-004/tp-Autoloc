@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.*;
+
 
 @Entity
 @Getter
@@ -19,4 +21,9 @@ public class Maintenance {
     private LocalDate dateDebut;
     private LocalDate dateFin;
     private String description;
+
+    // * maintenance<->1vehicule
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="vehicule_id")
+    private Vehicule vehicule;
 }

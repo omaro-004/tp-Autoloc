@@ -3,6 +3,7 @@ package tn.esprit.tpautoloc.domain;
 import jakarta.persistence.*;
 import lombok.*;
 import tn.esprit.tpautoloc.domain.enums.RoleEmployee;
+import java.util.*;
 
 @Entity
 @Getter
@@ -20,4 +21,10 @@ public class Employee {
 
     @Enumerated(EnumType.STRING)
     private RoleEmployee role;
+
+
+    //*employyes<->1 agence
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name ="agence_id")
+    private Agence agence;
 }
